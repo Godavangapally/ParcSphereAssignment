@@ -40,7 +40,7 @@ export default async function DashboardPage() {
         <h1 className="text-3xl font-bold text-white mb-2">
           Welcome back, {session!.user.name}!
         </h1>
-        <p className="text-gray-400">Here's an overview of your tasks</p>
+        <p className="text-gray-400">Here&apos;s an overview of your tasks</p>
       </div>
 
       {/* Stats Grid */}

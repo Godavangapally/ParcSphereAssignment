@@ -13,8 +13,7 @@ const taskSchema = z.object({
   status: z.enum(["pending", "completed"]).default("pending"),
 });
 
-// GET - Fetch all tasks for logged-in user
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest)  {
   try {
     const session = await getServerSession(authOptions);
     
