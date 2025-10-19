@@ -1,0 +1,36 @@
+{
+  "name": "pracsphere-assignment",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "type-check": "turbo run type-check"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^3.0.0",
+    "@types/next": "^9.0.0",
+    "@types/nodemailer": "^7.0.2",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "prettier": "^3.0.0",
+    "turbo": "^2.0.0",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@10.18.3",
+  "dependencies": {
+    "lucide-react": "^0.263.1",
+    "next-auth": "^4.24.11",
+    "nodemailer": "^7.0.9"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ]
+}
