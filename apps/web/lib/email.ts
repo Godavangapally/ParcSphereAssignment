@@ -1,10 +1,26 @@
 import nodemailer from "nodemailer";
+
+// Create transporter with better configuration
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
+  // Add additional options for better reliability
+  pool: true,
+  maxConnections: 1,
+  rateDelta: 20000,
+  rateLimit: 5,
+});
+
+// Verify transporter configuration
+transporter.verify((error, success) => {
+  if (error) {
+    console.error("❌ Email transporter verification failed:", error);
+  } else {
+    console.log("✅ Email transporter is ready to send messages");
+  }
 });
 
 interface OverdueTask {
@@ -13,11 +29,68 @@ interface OverdueTask {
   dueDate: string;
 }
 
+// Test email function to verify configuration
+export async function sendTestEmail(toEmail: string) {
+  const mailOptions = {
+    from: `"PracSphere" <${process.env.EMAIL_USER}>`,
+    to: toEmail,
+    subject: "🧪 PracSphere Email Test",
+    html: `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+            .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+            .header { background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%); padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+            .header h1 { color: white; margin: 0; }
+            .content { background: white; padding: 30px; border-radius: 0 0 10px 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <div class="header">
+              <h1>🧪 Email Test Successful!</h1>
+            </div>
+            <div class="content">
+              <p>Hello!</p>
+              <p>This is a test email from PracSphere to verify that email notifications are working correctly.</p>
+              <p><strong>✅ Email system is functioning properly!</strong></p>
+              <p>You will now receive notifications for overdue tasks.</p>
+            </div>
+          </div>
+        </body>
+      </html>
+    `,
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log(`✅ Test email sent successfully to ${toEmail}`);
+    return { success: true, message: "Test email sent successfully" };
+  } catch (error) {
+    console.error("❌ Test email failed:", error);
+    return { success: false, error: error instanceof Error ? error.message : String(error) };
+  }
+}
+
 export async function sendOverdueTaskEmail(
   userEmail: string,
   userName: string,
   overdueTasks: OverdueTask[]
 ) {
+  // Validate inputs
+  if (!userEmail || !userName || !overdueTasks || overdueTasks.length === 0) {
+    console.error("❌ Invalid parameters for sendOverdueTaskEmail");
+    return { success: false, error: "Invalid parameters" };
+  }
+
+  // Check if email configuration is available
+  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    console.error("❌ Email configuration missing");
+    return { success: false, error: "Email configuration missing" };
+  }
+
   const tasksList = overdueTasks
     .map(
       (task) => `
@@ -78,11 +151,11 @@ export async function sendOverdueTaskEmail(
   };
 
   try {
-    await transporter.sendMail(mailOptions);
-    console.log(`Overdue notification sent to ${userEmail}`);
-    return { success: true };
+    const result = await transporter.sendMail(mailOptions);
+    console.log(`✅ Overdue notification sent to ${userEmail}`, result.messageId);
+    return { success: true, messageId: result.messageId };
   } catch (error) {
-    console.error("Email sending error:", error);
-    return { success: false, error };
+    console.error("❌ Email sending error:", error);
+    return { success: false, error: error instanceof Error ? error.message : String(error) };
   }
 }
