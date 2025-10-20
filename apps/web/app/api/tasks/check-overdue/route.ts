@@ -20,14 +20,21 @@ export async function GET(request: NextRequest) {
     let notificationsSent = 0;
 
     for (const user of users) {
-      const overdueTasks = await db
+      // Some existing tasks may have dueDate stored as string. Load candidate tasks
+      // and filter in memory to ensure we correctly detect overdue tasks regardless
+      // of whether dueDate is a Date or a string in the DB.
+      const candidateTasks = await db
         .collection("tasks")
         .find({
           userId: user._id,
           status: "pending",
-          dueDate: { $lt: now }, 
         })
         .toArray();
+
+      const overdueTasks = candidateTasks.filter((t: any) => {
+        const due = new Date(t.dueDate);
+        return !Number.isNaN(due.getTime()) && due < now;
+      });
 
       console.log("Checking overdue tasks for:", user.email);
       console.log("Found overdue tasks:", overdueTasks.length);
@@ -95,14 +102,18 @@ export async function POST(request: NextRequest) {
     }
 
     const now = new Date();
-    const overdueTasks = await db
+    const candidateTasks = await db
       .collection("tasks")
       .find({
         userId: user._id,
         status: "pending",
-        dueDate: { $lt: now }, // ✅ FIXED HERE TOO
       })
       .toArray();
+
+    const overdueTasks = candidateTasks.filter((t: any) => {
+      const due = new Date(t.dueDate);
+      return !Number.isNaN(due.getTime()) && due < now;
+    });
 
     console.log("Manual overdue check for:", user.email);
     console.log("Found overdue tasks:", overdueTasks.length);

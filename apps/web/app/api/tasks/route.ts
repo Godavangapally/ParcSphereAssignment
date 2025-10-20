@@ -9,7 +9,10 @@ import { z } from "zod";
 const taskSchema = z.object({
   title: z.string().min(1, "Title is required"),
   description: z.string().min(1, "Description is required"),
-  dueDate: z.string(),
+  // Accept string from client but ensure it is a valid date
+  dueDate: z
+    .string()
+    .refine((v) => !Number.isNaN(new Date(v).getTime()), "Invalid due date"),
   status: z.enum(["pending", "completed"]).default("pending"),
 });
 
@@ -52,7 +55,11 @@ export async function POST(request: NextRequest) {
     
     const db = await getDatabase();
     const result = await db.collection("tasks").insertOne({
-      ...validatedData,
+      title: validatedData.title,
+      description: validatedData.description,
+      // Store as Date for reliable date comparisons
+      dueDate: new Date(validatedData.dueDate),
+      status: validatedData.status,
       userId: new ObjectId(session.user.id),
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -132,7 +139,8 @@ export async function PATCH(request: NextRequest) {
         $set: {
           title,
           description,
-          dueDate,
+          // Persist as Date
+          dueDate: new Date(dueDate),
           updatedAt: new Date(),
         },
       }
