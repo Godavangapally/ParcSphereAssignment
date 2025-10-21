@@ -215,33 +215,24 @@ Make sure you have the following installed on your system:
 <div align="center">
 
 ### 🏠 Landing Page
-![Landing Page](image.png)
+![Landing Page](docs/screenshots/landing-page.png)
+*Modern landing page with gradient background, feature cards, and call-to-action buttons*
 
-### 📝 Sign Up Page
-![SignUp page](image-8.png)
+### 📊 Dashboard Overview
+![Dashboard](docs/screenshots/dashboard.png)
+*Main dashboard showing task statistics, quick actions, and user information*
 
-### 🔐 Login Page
-![Login Page](image-1.png)
+### ✅ Task Management
+![Task Dashboard](docs/screenshots/task-dashboard.png)
+*Task management interface with filtering options and task cards*
 
-### 📊 Dashboard with Sidebar and Top Bar
-![DashBoard with side bar and Top bar](image-2.png)
-
-### ✅ Task Dashboard
-![Task DashBoard](image-3.png)
-
-### ➕ Creating New Task
-![Creating New Task](image-4.png)
-
-### 👤 Profile Dashboard
-![Profile DashBoard](image-5.png)
-
-### 🗄️ MongoDB Tasks Collection
-![Mongodb Tasks Collection](image-6.png)
-
-### 👥 MongoDB Users Collection
-![MongoDb Users Collection](image-7.png)
+### 👤 User Profile
+![Profile Dashboard](docs/screenshots/profile-dashboard.png)
+*User profile page with account information and security settings*
 
 </div>
+
+> **Note:** To add screenshots, place your image files in the `docs/screenshots/` directory and update the paths above. The current placeholder images will be replaced once you add the actual screenshots.
 
 ## 🛠️ Available Scripts
 

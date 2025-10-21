@@ -30,12 +30,6 @@
     "pnpm": ">=8.0.0"
   },
   "packageManager": "pnpm@10.18.3",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "lucide-react": "^0.263.1",
-    "next-auth": "^4.24.11",
-    "nodemailer": "^7.0.9"
-  },
   "workspaces": [
     "packages/*",
     "apps/*"
