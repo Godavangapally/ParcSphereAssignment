@@ -10,9 +10,6 @@
 
 **A modern task management application built with Next.js, TypeScript, and MongoDB**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](http://makeapullrequest.com)
-
 </div>
 
 ---
@@ -267,22 +264,11 @@ We welcome contributions! Please feel free to submit a Pull Request. For major c
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 👨‍💻 Author
 
 **Godavangapally**
 - GitHub: [@Godavangapally](https://github.com/Godavangapally)
 - Email: godadevi1301@gmail.com
-
-## 🙏 Acknowledgments
-
-- Next.js team for the amazing framework
-- MongoDB for the robust database solution
-- Tailwind CSS for the beautiful styling system
-- All contributors who help improve this project
 
 ---
 
