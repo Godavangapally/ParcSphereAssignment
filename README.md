@@ -1,132 +1,300 @@
-1.COMPLETE FILE STRUCTURE:
+# 🚀 ParcSphere Assignment
+
+<div align="center">
+
+![Next.js](https://img.shields.io/badge/Next.js-14.2.0-black?style=for-the-badge&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-blue?style=for-the-badge&logo=typescript)
+![MongoDB](https://img.shields.io/badge/MongoDB-4.4-green?style=for-the-badge&logo=mongodb)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.0-38B2AC?style=for-the-badge&logo=tailwind-css)
+![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=node.js)
+
+**A modern task management application built with Next.js, TypeScript, and MongoDB**
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](http://makeapullrequest.com)
+
+</div>
+
+---
+
+## ✨ Features
+
+- 🔐 **Secure Authentication** - User registration and login with NextAuth.js
+- 📋 **Task Management** - Create, view, and manage tasks efficiently
+- 👤 **User Profiles** - Personalized user dashboard and profile management
+- 📱 **Responsive Design** - Beautiful UI that works on all devices
+- 🎨 **Modern UI/UX** - Clean interface built with Tailwind CSS
+- 🗄️ **Database Integration** - MongoDB for reliable data storage
+- ⚡ **Fast Performance** - Optimized with Next.js and Turbo monorepo
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **Next.js 14** - React framework with App Router
+- **TypeScript** - Type-safe JavaScript
+- **Tailwind CSS** - Utility-first CSS framework
+- **NextAuth.js** - Authentication for Next.js
+
+### Backend
+- **Node.js** - JavaScript runtime
+- **MongoDB** - NoSQL database
+- **Mongoose** - MongoDB object modeling
+
+### Development Tools
+- **Turbo** - Monorepo build system
+- **pnpm** - Fast, disk space efficient package manager
+- **ESLint** - Code linting
+- **Prettier** - Code formatting
+
+## 📁 Project Structure
+
+```
 pracsphere-assignment/
 │
-├──  package.json                    
-├──  pnpm-workspace.yaml            
-├──  turbo.json                     
-├── .gitignore                     
-├──  README.md                      
-├──  setup.sh                       
+├── 📦 package.json                    # Root package configuration
+├── 📦 pnpm-workspace.yaml             # pnpm workspace configuration
+├── ⚡ turbo.json                      # Turbo build configuration
+├── 📝 .gitignore                      # Git ignore rules
+├── 📖 README.md                       # Project documentation
+├── 🔧 setup.sh                        # Setup script
 │
-├──  apps/
-│   └──  web/                       
-│       ├──  package.json
-│       ├──  tsconfig.json
-│       ├──  tailwind.config.ts
-│       ├──  postcss.config.js
-│       ├──  next.config.js
-│       ├──  .env.example
-│       ├──  .env.local            
+├── 📱 apps/
+│   └── web/                           # Next.js web application
+│       ├── 📦 package.json
+│       ├── ⚙️ tsconfig.json
+│       ├── 🎨 tailwind.config.ts
+│       ├── 🔧 postcss.config.js
+│       ├── ⚡ next.config.js
+│       ├── 🔐 .env.example
+│       ├── 🔐 .env.local
 │       │
-│       ├── app/
-│       │   ├──  layout.tsx
-│       │   ├──  page.tsx          
-│       │   ├──  providers.tsx
-│       │   ├──  globals.css
+│       ├── 📁 app/                    # Next.js App Router
+│       │   ├── 📄 layout.tsx         # Root layout
+│       │   ├── 🏠 page.tsx           # Home page
+│       │   ├── 🔄 providers.tsx      # Context providers
+│       │   ├── 🎨 globals.css        # Global styles
 │       │   │
-│       │   ├──  (auth)/
-│       │   │   ├──  login/
-│       │   │   │   └──  page.tsx
-│       │   │   └──  signup/
-│       │   │       └──  page.tsx
+│       │   ├── 🔐 (auth)/            # Authentication routes
+│       │   │   ├── login/
+│       │   │   │   └── page.tsx
+│       │   │   └── signup/
+│       │   │       └── page.tsx
 │       │   │
-│       │   ├── (dashboard)/
-│       │   │   ├──  layout.tsx    
-│       │   │   ├──  dashboard/
-│       │   │   │   └──  page.tsx
-│       │   │   ├──  tasks/
-│       │   │   │   └──  page.tsx
+│       │   ├── 📊 (dashboard)/       # Dashboard routes
+│       │   │   ├── layout.tsx
+│       │   │   ├── dashboard/
+│       │   │   │   └── page.tsx
+│       │   │   ├── tasks/
+│       │   │   │   └── page.tsx
 │       │   │   └── profile/
-│       │   │       └──  page.tsx
+│       │   │       └── page.tsx
 │       │   │
-│       │   └──  api/
-│       │       ├──  auth/
-│       │       │   ├──  [..nextauth]/
+│       │   └── 🔌 api/               # API routes
+│       │       ├── auth/
+│       │       │   ├── [..nextauth]/
 │       │       │   │   └── route.ts
-│       │       │   └──  signup/
-│       │       │       └──  route.ts
-│       │       └──  tasks/
-│       │           └──  route.ts
+│       │       │   └── signup/
+│       │       │       └── route.ts
+│       │       └── tasks/
+│       │           └── route.ts
 │       │
-│       ├──  lib/
-│       │   ├──  mongodb.ts       
-│       │   └──  auth.ts          
+│       ├── 📚 lib/                   # Utility libraries
+│       │   ├── mongodb.ts           # MongoDB connection
+│       │   └── auth.ts              # Authentication config
 │       │
-│       └──  types/
-│           └──  next-auth.d.ts    
+│       └── 📝 types/                 # TypeScript type definitions
+│           └── next-auth.d.ts
 │
-└──  packages/
-    ├──  ui/                       
-    │   ├──  package.json
-    │   ├──  tsconfig.json
-    │   └──  src/
-    │       ├──  index.ts
-    │       ├──  Button.tsx
-    │       ├──  Card.tsx
-    │       ├──  Input.tsx
-    │       ├──  Sidebar.tsx
-    │       └──  Topbar.tsx
+└── 📦 packages/
+    ├── ui/                           # Shared UI components
+    │   ├── 📦 package.json
+    │   ├── ⚙️ tsconfig.json
+    │   └── src/
+    │       ├── index.ts
+    │       ├── Button.tsx
+    │       ├── Card.tsx
+    │       ├── Input.tsx
+    │       ├── Sidebar.tsx
+    │       └── Topbar.tsx
     │
-    └──  config/                    
-        ├──  tailwind/
-        │   └──  index.js
-        └──  typescript/
-            ├──  base.json
-            └──  nextjs.json
+    └── config/                       # Shared configurations
+        ├── tailwind/
+        │   └── index.js
+        └── typescript/
+            ├── base.json
+            └── nextjs.json
+```
 
-2. # Install Node.js 18+ 
-# Download from: https://nodejs.org/
+## 🚀 Getting Started
 
-# Install pnpm globally
-npm install -g pnpm@latest
+### Prerequisites
 
-3. # Install all packages 
-pnpm install
+Make sure you have the following installed on your system:
 
-4. Configure MongoDb Compass
-# Install MongoDB locally
-# macOS: brew install mongodb-community
-# Ubuntu: sudo apt install mongodb
-# Windows: Download from mongodb.com
+- **Node.js 18+** - [Download from nodejs.org](https://nodejs.org/)
+- **pnpm** - Package manager
+- **MongoDB** - Database
 
-# Start MongoDB
-mongod 
-In another terminal mongosh
+### Installation
 
-5: Environment Variables
-Create apps/web/.env.local:
-# Database
-MONGODB_URI=mongodb://localhost:27017/pracsphere
-MONGODB_DB=pracsphere
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Godavangapally/ParcSphereAssignment.git
+   cd ParcSphereAssignment
+   ```
 
-# NextAuth
-NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET=a0e4994129d5f18a2ef5357ba8c3f7a15f253c184ae3d1b569078e7dbe46e61f
+2. **Install pnpm globally**
+   ```bash
+   npm install -g pnpm@latest
+   ```
 
-# Email (Gmail)
-EMAIL_USER=godadevi1301@gmail.com
-EMAIL_PASS=ijdz ukkx qxsp eget
-NODE_ENV=development
-CRON_SECRET=NFVtpA5vGTynetw1Wnf8mIDxHV3TBwltJRZ8aqxeJoI
+3. **Install all dependencies**
+   ```bash
+   pnpm install
+   ```
 
-6. # Start all apps
-pnpm dev
+4. **Set up MongoDB**
+   
+   **macOS:**
+   ```bash
+   brew install mongodb-community
+   ```
+   
+   **Ubuntu:**
+   ```bash
+   sudo apt install mongodb
+   ```
+   
+   **Windows:**
+   Download from [mongodb.com](https://www.mongodb.com/try/download/community)
 
-# Or start only web app
-pnpm dev --filter=web
+5. **Start MongoDB**
+   ```bash
+   mongod
+   ```
+   
+   In another terminal:
+   ```bash
+   mongosh
+   ```
 
-7. Open Browser
-Navigate to: http://localhost:3000
+6. **Configure Environment Variables**
+   
+   Create `apps/web/.env.local`:
+   ```env
+   # Database
+   MONGODB_URI=mongodb://localhost:27017/pracsphere
+   MONGODB_DB=pracsphere
 
-![Landing Page](image.png) [Landing Page]
+   # NextAuth
+   NEXTAUTH_URL=http://localhost:3000
+   NEXTAUTH_SECRET=your-secret-key-here
+
+   # Email (Gmail)
+   EMAIL_USER=your-email@gmail.com
+   EMAIL_PASS=your-app-password
+   NODE_ENV=development
+   CRON_SECRET=your-cron-secret
+   ```
+
+7. **Start the development server**
+   ```bash
+   # Start all apps
+   pnpm dev
+   
+   # Or start only the web app
+   pnpm dev --filter=web
+   ```
+
+8. **Open your browser**
+   
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 📸 Screenshots
+
+<div align="center">
+
+### 🏠 Landing Page
+![Landing Page](image.png)
+
+### 📝 Sign Up Page
 ![SignUp page](image-8.png)
+
+### 🔐 Login Page
 ![Login Page](image-1.png)
+
+### 📊 Dashboard with Sidebar and Top Bar
 ![DashBoard with side bar and Top bar](image-2.png)
+
+### ✅ Task Dashboard
 ![Task DashBoard](image-3.png)
+
+### ➕ Creating New Task
 ![Creating New Task](image-4.png)
+
+### 👤 Profile Dashboard
 ![Profile DashBoard](image-5.png)
+
+### 🗄️ MongoDB Tasks Collection
 ![Mongodb Tasks Collection](image-6.png)
+
+### 👥 MongoDB Users Collection
 ![MongoDb Users Collection](image-7.png)
 
+</div>
 
+## 🛠️ Available Scripts
 
+```bash
+# Development
+pnpm dev                 # Start all apps in development mode
+pnpm dev --filter=web    # Start only the web app
+
+# Building
+pnpm build              # Build all apps for production
+pnpm build --filter=web # Build only the web app
+
+# Code Quality
+pnpm lint               # Run ESLint on all packages
+pnpm type-check         # Run TypeScript type checking
+
+# Maintenance
+pnpm clean              # Clean all build artifacts and node_modules
+```
+
+## 🤝 Contributing
+
+We welcome contributions! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👨‍💻 Author
+
+**Godavangapally**
+- GitHub: [@Godavangapally](https://github.com/Godavangapally)
+- Email: godadevi1301@gmail.com
+
+## 🙏 Acknowledgments
+
+- Next.js team for the amazing framework
+- MongoDB for the robust database solution
+- Tailwind CSS for the beautiful styling system
+- All contributors who help improve this project
+
+---
+
+<div align="center">
+
+**⭐ Star this repository if you found it helpful!**
+
+Made with ❤️ by [Godavangapally](https://github.com/Godavangapally)
+
+</div>
