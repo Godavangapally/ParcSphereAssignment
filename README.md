@@ -218,6 +218,10 @@ Make sure you have the following installed on your system:
 ![Landing Page](docs/screenshots/landing-page.png)
 *Modern landing page with gradient background, feature cards, and call-to-action buttons*
 
+### 📝 Sign Up
+![Sign Up](docs/screenshots/signup.png)
+*Registration screen for creating a new account*
+
 ### 📊 Dashboard Overview
 ![Dashboard](docs/screenshots/dashboard.png)
 *Main dashboard showing task statistics, quick actions, and user information*
