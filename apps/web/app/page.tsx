@@ -5,7 +5,7 @@ import { ArrowRight, CheckCircle, Shield, Zap, Sparkles, Target, Users } from "l
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden relative">
-      {/* Animated background blobs */}
+      
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
         <div className="absolute top-40 right-20 w-72 h-72 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
@@ -24,6 +24,11 @@ export default function Home() {
             </span>
           </div>
           <div className="flex items-center space-x-4">
+            <Link href="/admin/email-control">
+              <Button variant="ghost" className="text-white hover:text-purple-200 hover:scale-105 transition-transform">
+                Email Control
+              </Button>
+            </Link>
             <Link href="/login">
               <Button variant="ghost" className="text-white hover:text-purple-200 hover:scale-105 transition-transform">
                 Login
