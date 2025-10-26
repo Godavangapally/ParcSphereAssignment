@@ -24,11 +24,6 @@ export default function Home() {
             </span>
           </div>
           <div className="flex items-center space-x-4">
-            <Link href="/admin/email-control">
-              <Button variant="ghost" className="text-white hover:text-purple-200 hover:scale-105 transition-transform">
-                Email Control
-              </Button>
-            </Link>
             <Link href="/login">
               <Button variant="ghost" className="text-white hover:text-purple-200 hover:scale-105 transition-transform">
                 Login

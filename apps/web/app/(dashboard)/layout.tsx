@@ -1,3 +1,4 @@
+// FILE: apps/web/app/(dashboard)/layout.tsx
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
@@ -15,19 +16,11 @@ export default async function DashboardLayout({
   }
 
   return (
-    <div className="flex h-screen bg-slate-900 overflow-hidden">
-      {/* Sidebar - Fixed on the left */}
+    <div className="min-h-screen bg-slate-900 flex">
       <Sidebar />
-      
-      {/* Main content area */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Topbar */}
+      <div className="flex-1 flex flex-col min-w-0">
         <Topbar user={session.user} />
-        
-        {/* Page content - scrollable */}
-        <main className="flex-1 overflow-y-auto p-6 bg-slate-950">
-          {children}
-        </main>
+        <main className="flex-1 p-6 overflow-auto">{children}</main>
       </div>
     </div>
   );
