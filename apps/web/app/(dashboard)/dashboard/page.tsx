@@ -37,10 +37,10 @@ export default async function DashboardPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-white mb-2">
+        <h1 className="text-3xl font-semibold text-gray-900 dark:text-white mb-2">
           Welcome back, {session!.user.name}!
         </h1>
-        <p className="text-gray-400">Here&apos;s an overview of your tasks</p>
+        <p className="text-gray-500 dark:text-gray-400">Here&apos;s an overview of your tasks</p>
       </div>
 
       {/* Stats Grid */}
@@ -48,55 +48,55 @@ export default async function DashboardPage() {
         <StatCard
           title="Total Tasks"
           value={stats.total}
-          icon={<ListTodo className="w-8 h-8" />}
-          color="bg-blue-500"
+          icon={<ListTodo className="w-8 h-8 text-gray-900 dark:text-white" />}
+          color=""
         />
         <StatCard
           title="Completed"
           value={stats.completed}
-          icon={<CheckCircle className="w-8 h-8" />}
-          color="bg-green-500"
+          icon={<CheckCircle className="w-8 h-8 text-gray-900 dark:text-white" />}
+          color=""
         />
         <StatCard
           title="Pending"
           value={stats.pending}
-          icon={<Clock className="w-8 h-8" />}
-          color="bg-yellow-500"
+          icon={<Clock className="w-8 h-8 text-gray-900 dark:text-white" />}
+          color=""
         />
         <StatCard
           title="Overdue"
           value={stats.overdue}
-          icon={<AlertCircle className="w-8 h-8" />}
-          color="bg-red-500"
+          icon={<AlertCircle className="w-8 h-8 text-gray-900 dark:text-white" />}
+          color=""
         />
       </div>
 
       {/* Quick Actions */}
-      <Card className="bg-slate-800 border-slate-700">
+      <Card>
         <div className="p-6">
-          <h2 className="text-xl font-bold text-white mb-4">Quick Actions</h2>
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Quick Actions</h2>
           <div className="flex flex-wrap gap-4">
             <Link
               href="/tasks?create=true"
-              className="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white rounded-lg font-semibold transition-all"
+              className="px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-100 rounded-lg font-medium transition-all"
             >
               + Create New Task
             </Link>
             <Link
               href="/tasks"
-              className="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-semibold transition-all"
+              className="px-6 py-3 bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-900 dark:text-white rounded-lg font-medium transition-all"
             >
               View All Tasks
             </Link>
             <Link
               href="/tasks?filter=pending"
-              className="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-semibold transition-all"
+              className="px-6 py-3 bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-900 dark:text-white rounded-lg font-medium transition-all"
             >
               Pending Tasks
             </Link>
             <Link
               href="/profile"
-              className="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white rounded-lg font-semibold transition-all"
+              className="px-6 py-3 bg-gray-100 dark:bg-gray-900 hover:bg-gray-200 dark:hover:bg-gray-800 text-gray-900 dark:text-white rounded-lg font-medium transition-all"
             >
               My Profile
             </Link>
@@ -119,13 +119,13 @@ function StatCard({
   color: string;
 }) {
   return (
-    <Card className="bg-slate-800 border-slate-700">
+    <Card>
       <div className="p-6">
         <div className="flex items-center justify-between mb-4">
-          <div className={`${color} p-3 rounded-lg`}>{icon}</div>
+          <div className={`${color} p-3 rounded-lg bg-gray-100 dark:bg-gray-900`}>{icon}</div>
         </div>
-        <h3 className="text-gray-400 text-sm font-medium mb-1">{title}</h3>
-        <p className="text-3xl font-bold text-white">{value}</p>
+        <h3 className="text-gray-500 dark:text-gray-400 text-sm font-medium mb-1">{title}</h3>
+        <p className="text-3xl font-semibold text-gray-900 dark:text-white">{value}</p>
       </div>
     </Card>
   );

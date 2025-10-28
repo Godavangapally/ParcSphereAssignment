@@ -140,7 +140,7 @@ export default function TasksPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-96">
-        <div className="text-white text-xl">Loading tasks...</div>
+        <div className="text-gray-900 dark:text-white text-xl">Loading tasks...</div>
       </div>
     );
   }
@@ -150,12 +150,11 @@ export default function TasksPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-white mb-2">Task Manager</h1>
-          <p className="text-gray-400">Manage and organize your tasks efficiently</p>
+          <h1 className="text-3xl font-semibold text-gray-900 dark:text-white mb-2">Task Manager</h1>
+          <p className="text-gray-500 dark:text-gray-400">Manage and organize your tasks efficiently</p>
         </div>
         <Button
           onClick={() => setShowNewTaskForm(!showNewTaskForm)}
-          className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
         >
           <Plus className="w-5 h-5 mr-2" />
           New Task
@@ -164,9 +163,9 @@ export default function TasksPage() {
 
       {/* New Task Form */}
       {showNewTaskForm && (
-        <Card className="bg-slate-800 border-slate-700">
+        <Card>
           <form onSubmit={handleCreateTask} className="p-6 space-y-4">
-            <h3 className="text-xl font-bold text-white mb-4">Create New Task</h3>
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Create New Task</h3>
             
             <Input
               label="Task Title"
@@ -178,11 +177,11 @@ export default function TasksPage() {
             />
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
                 Description
               </label>
               <textarea
-                className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-4 py-3 bg-white dark:bg-black border border-gray-300 dark:border-gray-700 rounded-lg text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white"
                 placeholder="e.g., Client X monthly return"
                 rows={3}
                 value={newTask.description}
@@ -203,12 +202,12 @@ export default function TasksPage() {
             />
 
             <div className="flex space-x-3">
-              <Button type="submit" className="bg-green-600 hover:bg-green-700">
+              <Button type="submit">
                 Create Task
               </Button>
               <Button
                 type="button"
-                variant="ghost"
+                variant="secondary"
                 onClick={() => setShowNewTaskForm(false)}
               >
                 Cancel
@@ -220,14 +219,14 @@ export default function TasksPage() {
 
       {/* Edit Task Form */}
       {editingTask && (
-        <Card className="bg-slate-800 border-slate-700">
+        <Card>
           <form onSubmit={handleEditTask} className="p-6 space-y-4">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xl font-bold text-white">Edit Task</h3>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Edit Task</h3>
               <button
                 type="button"
                 onClick={() => setEditingTask(null)}
-                className="text-gray-400 hover:text-white"
+                className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -243,11 +242,11 @@ export default function TasksPage() {
             />
 
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-gray-900 dark:text-white mb-2">
                 Description
               </label>
               <textarea
-                className="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="w-full px-4 py-3 bg-white dark:bg-black border border-gray-300 dark:border-gray-700 rounded-lg text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white"
                 placeholder="e.g., Client X monthly return"
                 rows={3}
                 value={editingTask.description}
@@ -268,12 +267,12 @@ export default function TasksPage() {
             />
 
             <div className="flex space-x-3">
-              <Button type="submit" className="bg-blue-600 hover:bg-blue-700">
+              <Button type="submit">
                 Update Task
               </Button>
               <Button
                 type="button"
-                variant="ghost"
+                variant="secondary"
                 onClick={() => setEditingTask(null)}
               >
                 Cancel
@@ -285,7 +284,7 @@ export default function TasksPage() {
 
       {/* Filter Buttons */}
       <div className="flex items-center space-x-3">
-        <Filter className="w-5 h-5 text-gray-400" />
+        <Filter className="w-5 h-5 text-gray-500 dark:text-gray-400" />
         <Button
           variant={filter === "all" ? "primary" : "ghost"}
           size="sm"
@@ -311,13 +310,13 @@ export default function TasksPage() {
 
       {/* Tasks Grid */}
       {filteredTasks.length === 0 ? (
-        <Card className="bg-slate-800 border-slate-700">
+        <Card>
           <div className="p-12 text-center">
-            <Clock className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-gray-400 mb-2">
+            <Clock className="w-16 h-16 text-gray-300 dark:text-gray-600 mx-auto mb-4" />
+            <h3 className="text-xl font-semibold text-gray-500 dark:text-gray-400 mb-2">
               No tasks found
             </h3>
-            <p className="text-gray-500">
+            <p className="text-gray-400 dark:text-gray-500">
               {filter === "all"
                 ? "Create your first task to get started"
                 : `No ${filter} tasks at the moment`}
@@ -329,22 +328,22 @@ export default function TasksPage() {
           {filteredTasks.map((task) => (
             <Card
               key={task._id}
-              className={`bg-slate-800 border-slate-700 hover:border-purple-500 transition-all ${
+              className={`transition-all ${
                 isOverdue(task.dueDate, task.status)
                   ? "border-red-500 border-2"
-                  : ""
+                  : "border-gray-200 dark:border-gray-900"
               }`}
             >
               <div className="p-6">
                 {/* Status Badge */}
                 <div className="flex items-center justify-between mb-4">
                   <span
-                    className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                    className={`px-3 py-1 rounded-full text-xs font-medium ${
                       task.status === "completed"
-                        ? "bg-green-500/20 text-green-400"
+                        ? "bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300"
                         : isOverdue(task.dueDate, task.status)
-                        ? "bg-red-500/20 text-red-400"
-                        : "bg-yellow-500/20 text-yellow-400"
+                        ? "bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400"
+                        : "bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300"
                     }`}
                   >
                     {task.status === "completed"
@@ -357,22 +356,22 @@ export default function TasksPage() {
 
                 {/* Task Title */}
                 <h3
-                  className={`text-lg font-bold mb-2 ${
+                  className={`text-lg font-semibold mb-2 ${
                     task.status === "completed"
-                      ? "text-gray-400 line-through"
-                      : "text-white"
+                      ? "text-gray-400 dark:text-gray-500 line-through"
+                      : "text-gray-900 dark:text-white"
                   }`}
                 >
                   {task.title}
                 </h3>
 
                 {/* Task Description */}
-                <p className="text-gray-400 text-sm mb-4 line-clamp-2">
+                <p className="text-gray-500 dark:text-gray-400 text-sm mb-4 line-clamp-2">
                   {task.description}
                 </p>
 
                 {/* Due Date */}
-                <div className="flex items-center text-gray-500 text-sm mb-4">
+                <div className="flex items-center text-gray-500 dark:text-gray-400 text-sm mb-4">
                   <Calendar className="w-4 h-4 mr-2" />
                   {new Date(task.dueDate).toLocaleDateString("en-US", {
                     month: "short",
@@ -405,7 +404,7 @@ export default function TasksPage() {
                   {canEdit(task.dueDate) && task.status === "pending" && (
                     <Button
                       size="sm"
-                      variant="secondary"
+                      variant="outline"
                       onClick={() => setEditingTask(task)}
                       title="Edit task"
                     >
